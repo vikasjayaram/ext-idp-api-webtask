@@ -21,7 +21,6 @@
    const context = req.webtaskContext;
    const token = req.headers['authorization'].split(' ')[1];
    const reqBody = req.webtaskContext.body;
-   console.log(reqBody);
    async.waterfall([
      async.apply(verifyJWT, context, reqBody, token),
      getAccessToken,
