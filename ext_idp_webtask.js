@@ -93,8 +93,8 @@ function callExtIDPApi (context, reqBody, user, cb) {
   const api = reqBody.api_url;
   const provider = user.user_id.split('|')[0];
   /*
-  * Checks for identities array in the user profile
-  * Matches the access_token with the decode.sub provider/strategy
+  * Checks for the identities array in the user profile
+  * Matches the access_token with the user_id provider/strategy
   */
   if (user && user.identities) {
     for (var i = 0; i < user.identities.length; i++) {
