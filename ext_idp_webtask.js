@@ -115,7 +115,7 @@ function callExtIDPApi (context, reqBody, user, cb) {
       cb(null, JSON.parse(body));
     });
   } else {
-    cb('No Access Token Available');
+    cb({error: 'No Access Token Available'});
   }
 };
 
