@@ -5,8 +5,8 @@
  const request = require('request');
  const express = require('express');
  const Webtask = require('webtask-tools');
+ const async   = require('async');
  const app     = express();
- const async = require('async');
 
  /*
  * Local variables
