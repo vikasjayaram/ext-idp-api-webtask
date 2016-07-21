@@ -36,11 +36,12 @@ https://webtask.it.auth0.com/api/run/wt-vikas_ramasethu-gmail_com-0/ext_idp_webt
 ```
 # Usage
 ```sh
+  const request = require('request');
   const options = {
     url: 'URL_WHEN_YOU_CREATE_WEBTASK',
     headers: {Authorization: 'Bearer USER_ID_TOKEN'},
     json: {api_url: 'IDP_API'}
-  }
+  };
   request.post(options, function (e, r, b){});
 ```
 # Example Usage
@@ -48,10 +49,11 @@ https://webtask.it.auth0.com/api/run/wt-vikas_ramasethu-gmail_com-0/ext_idp_webt
 The below is a sample on how to call a Google API with.
 
 ```sh
-const options = {
+  const request = require('request');
+  const options = {
     url: 'https://webtask.it.auth0.com/api/run/wt-vikas_ramasethu-gmail_com-0/ext_idp_webtask/call_ext_api?webtask_no_cache=1',
     headers: {Authorization: 'Bearer USER_ID_TOKEN'},
     json: {api_url: 'https://www.googleapis.com/youtube/v3/channels?part=snippet%2C+id%2C+statistics&mine=true'}
-  }
+  };
   request.post(options, function (e, r, b){});
 ```
