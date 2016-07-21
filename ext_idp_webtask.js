@@ -93,6 +93,10 @@ function callExtIDPApi (context, reqBody, user, cb) {
   let idp_access_token = null;
   const api = reqBody.api_url;
   const provider = user.user_id.split('|')[0];
+  /*
+  * Checks for identities array in the user profile
+  * Matches the access_token with the decode.sub provider/strategy
+  */
   if (user && user.identities) {
     for (var i = 0; i < user.identities.length; i++) {
       if (user.identities[i].access_token && user.identities[i].provider === provider) {
