@@ -16,11 +16,12 @@
 
  app.post('/call_ext_api', function (req, res) {
    if (!req.headers['authorization']){ return res.status(401).json({ error: 'unauthorized'}); }
-   if (req.webtaskContext.body === undefined) {return res.status(400).json({error: 'api_url is required'}); }
-   if (!req.webtaskContext.body || !req.webtaskContext.body['api_url']){return res.status(400).json({error: 'api_url is required'}); }
    const context = req.webtaskContext;
    const token = req.headers['authorization'].split(' ')[1];
    const reqBody = req.webtaskContext.body;
+   if (!reqBody) {
+     return res.status(400).json({error: 'api_url is required'});
+   }
    async.waterfall([
      async.apply(verifyJWT, context, reqBody, token),
      getAccessToken,
@@ -41,10 +42,10 @@ function verifyJWT(context, reqBody, token, cb) {
    });
 };
 /*
-* Request a Auth0 access token every 24 hours
+* Request a Auth0 access token every 30 minutes
 */
 function getAccessToken(context, reqBody, decoded, cb) {
-   if (!accessToken || !lastLogin || moment(new Date()).diff(lastLogin, 'minutes') > 1440) {
+   if (!accessToken || !lastLogin || moment(new Date()).diff(lastLogin, 'minutes') > 30) {
      const options = {
        url: 'https://' + context.data.ACCOUNT_NAME + '.auth0.com/oauth/token',
        json: {
