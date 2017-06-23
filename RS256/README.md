@@ -19,7 +19,7 @@ Change the following values in webtask.js
 
 ```sh
 const JWKS_URI = 'https://{tenant}.auth0.com/.well-known/jwks.json';
-const AUDIENCE = '{CLIENT_ID}';
+const AUDIENCE = '{YOUR_CLIENT_ID}';
 const ISSUER = 'https://{tenant}.auth0.com/';
 
 ```
