@@ -7,18 +7,21 @@
  const Webtask = require('webtask-tools');
  const async   = require('async');
  const app     = express();
+ const bodyParser = require('body-parser');
 
  /*
  * Local variables
  */
  let accessToken = null;
  let lastLogin = null;
-
+ 
+ app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: false }));
  app.post('/call_ext_api', function (req, res) {
    if (!req.headers['authorization']){ return res.status(401).json({ error: 'unauthorized'}); }
    const context = req.webtaskContext;
    const token = req.headers['authorization'].split(' ')[1];
-   const reqBody = req.webtaskContext.body;
+   const reqBody = req.body;
    if (!reqBody) {
      return res.status(400).json({error: 'api_url is required'});
    }
