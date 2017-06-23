@@ -20,7 +20,7 @@ Some more resources to read on [Identity Provider Access Tokens](https://auth0.c
 
 ### Setup
 
-Change the following values in webtask.js
+Change the following values in ext_idp_webtask.js
 
 ```sh
 const JWKS_URI = 'https://{tenant}.auth0.com/.well-known/jwks.json';
