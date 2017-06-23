@@ -12,6 +12,11 @@ wt init
 # Or, if you already use wt-cli:
 wt profile ls
 ```
+Please read the following link on how to
+[Call an Identity Provider API ](https://auth0.com/docs/what-to-do-once-the-user-is-logged-in/calling-an-external-idp-api)
+
+Some more resources to read on [Identity Provider Access Tokens](https://auth0.com/docs/tokens/idp)
+
 
 ### Setup
 
